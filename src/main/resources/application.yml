@@ -1,9 +1,12 @@
 spring:
   data:
     mongodb:
-      uri: "mongodb://heroku_rsscreator:${spring.datasource.password}@ds163164.mlab.com:63164/heroku_kqsxhqgf"
+      uri: "${MONGODB_URI}"
 
 management:
+  endpoint:
+    health:
+      show-details: ALWAYS
   endpoints:
     web:
       exposure:
