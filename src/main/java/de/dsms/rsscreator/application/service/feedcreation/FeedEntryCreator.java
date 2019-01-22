@@ -71,7 +71,7 @@ public class FeedEntryCreator {
         return selectElement(element, cssClass).attr("href");
     }
 
-    private Elements selectElement(Element element, String cssClass) {
-        return element.select("." + cssClass);
+    private Elements selectElement(Element element, String cssSelector) {
+        return element.select(cssSelector);
     }
 }
