@@ -19,11 +19,6 @@ public class FeedConfigController {
         return feedConfigService.getAll();
     }
 
-    @GetMapping("/{id}")
-    public FeedConfig get(@PathVariable String id) {
-        return feedConfigService.getOne(id);
-    }
-
     @PostMapping
     public FeedConfig post(@RequestBody FeedConfig feedConfig) {
         return feedConfigService.add(feedConfig);
