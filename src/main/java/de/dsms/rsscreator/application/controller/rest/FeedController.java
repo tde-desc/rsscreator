@@ -22,8 +22,8 @@ public class FeedController {
     }
 
     @GetMapping("/{id}")
-    public Feed get(@PathVariable String id) {
-        return feedRepository.findById(id).get();
+    public String get(@PathVariable String id) {
+        return feedRepository.findById(id).get().getRss();
     }
 
     @PutMapping
