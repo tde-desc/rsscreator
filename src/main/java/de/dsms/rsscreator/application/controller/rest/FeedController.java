@@ -1,4 +1,4 @@
-package de.dsms.rsscreator.application.controller;
+package de.dsms.rsscreator.application.controller.rest;
 
 import de.dsms.rsscreator.application.model.Feed;
 import de.dsms.rsscreator.application.model.FeedConfig;

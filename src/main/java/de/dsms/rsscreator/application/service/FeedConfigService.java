@@ -5,13 +5,26 @@ import de.dsms.rsscreator.application.repository.FeedConfigRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class FeedConfigService {
 
     private final FeedConfigRepository feedConfigRepository;
 
+    public List<FeedConfig> getAll() {
+        return feedConfigRepository.findAll();
+    }
+
     public FeedConfig add(FeedConfig feedConfig) {
+        return feedConfigRepository.save(feedConfig);
+    }
+
+    public FeedConfig update(FeedConfig feedConfig) {
+        if (!feedConfigRepository.existsById(feedConfig.getId())) {
+            throw new IllegalArgumentException("Die Id " + feedConfig.getId() + " ist unbekannt.");
+        }
         return feedConfigRepository.save(feedConfig);
     }
 }

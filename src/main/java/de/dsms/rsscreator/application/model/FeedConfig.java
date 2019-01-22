@@ -12,7 +12,6 @@ import javax.persistence.GeneratedValue;
 public class FeedConfig {
     @Id
     @GeneratedValue
-    @Getter(value = AccessLevel.PRIVATE)
     @Setter(value = AccessLevel.PRIVATE)
     private String id;
     private String name;
