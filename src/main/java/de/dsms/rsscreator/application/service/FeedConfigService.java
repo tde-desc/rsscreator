@@ -17,6 +17,10 @@ public class FeedConfigService {
         return feedConfigRepository.findAll();
     }
 
+    public FeedConfig getOne(String id) {
+        return feedConfigRepository.findById(id).get();
+    }
+
     public FeedConfig add(FeedConfig feedConfig) {
         return feedConfigRepository.save(feedConfig);
     }

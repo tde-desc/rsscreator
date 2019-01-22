@@ -15,8 +15,13 @@ public class FeedConfigController {
     private final FeedConfigService feedConfigService;
 
     @GetMapping
-    public List<FeedConfig> get() {
+    public List<FeedConfig> getAll() {
         return feedConfigService.getAll();
+    }
+
+    @GetMapping("/{id}")
+    public FeedConfig get(@PathVariable String id) {
+        return feedConfigService.getOne(id);
     }
 
     @PostMapping
