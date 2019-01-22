@@ -31,6 +31,7 @@ public class FeedService {
         }
         Feed feed = new Feed();
         feed.setRss(feedString.get());
+        feed.setId(feedConfig.getId());
         feedRepository.save(feed);
     }
 }
