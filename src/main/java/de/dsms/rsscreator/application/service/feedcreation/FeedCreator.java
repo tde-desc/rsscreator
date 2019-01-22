@@ -1,4 +1,4 @@
-package de.dsms.rsscreator.application.service;
+package de.dsms.rsscreator.application.service.feedcreation;
 
 import com.rometools.rome.feed.synd.*;
 import com.rometools.rome.io.FeedException;
@@ -7,6 +7,8 @@ import de.dsms.rsscreator.application.model.FeedConfig;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -17,10 +19,11 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-class FeedCreationService {
+public class FeedCreator {
 
     private static final String FEED_TYPE_ATOM = "atom_1.0";
     private static final String AUTHOR_DENNIS = "Dennis";
+    private final FeedEntryCreator feedEntryCreator;
 
     public Optional<String> createFeed(FeedConfig feedConfig) {
         Optional<Document> documentOptional = getDocument(feedConfig);
@@ -30,10 +33,7 @@ class FeedCreationService {
 
         Date publishDate = new Date();
         SyndFeed syndFeed = createSyndFeed(feedConfig, publishDate);
-        List<SyndEntry> syndEntries = new ArrayList<>();
-        SyndEntry syndEntry = createSyndEntry(feedConfig, documentOptional.get(), publishDate);
-        syndEntries.add(syndEntry);
-        syndFeed.setEntries(syndEntries);
+        syndFeed.setEntries(feedEntryCreator.createEntries(feedConfig, publishDate, documentOptional.get()));
         return createString(syndFeed);
     }
 
@@ -44,29 +44,6 @@ class FeedCreationService {
             e.printStackTrace();
         }
         return Optional.empty();
-    }
-
-    private SyndEntry createSyndEntry(FeedConfig feedConfig, Document document, Date publishDate) {
-        SyndEntry entry = new SyndEntryImpl();
-        entry.setTitle(getElementText(document, feedConfig.getTitleIdentifier()));
-        entry.setUri(getElementText(document, feedConfig.getUrlIdentifier()));
-        entry.setLink(getElementText(document, feedConfig.getUrlIdentifier()));
-        entry.setAuthor(getElementText(document, feedConfig.getAuthorIdentifier()));
-        entry.setDescription(createDescription(feedConfig, document));
-        entry.setUpdatedDate(publishDate);
-        entry.setPublishedDate(publishDate);
-        return entry;
-    }
-
-    private SyndContent createDescription(FeedConfig feedConfig, Document document) {
-        SyndContent syndContent = new SyndContentImpl();
-        syndContent.setType("text/html");
-        syndContent.setValue(getElementText(document, feedConfig.getDescriptionIdentifier()));
-        return syndContent;
-    }
-
-    private String getElementText(Document document, String cssClass) {
-        return document.select("."+cssClass).text();
     }
 
     private Optional<Document> getDocument(FeedConfig feedConfig) {

@@ -25,6 +25,6 @@ public class FeedController {
 
     @GetMapping
     public String get() {
-        return feedRepository.findAll().stream().map(Feed::getRss).collect(Collectors.toList()).get(0);
+        return feedRepository.findAll().stream().map(Feed::getRss).collect(Collectors.joining());
     }
 }
