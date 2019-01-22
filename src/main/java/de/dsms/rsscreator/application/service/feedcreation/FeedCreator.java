@@ -1,20 +1,17 @@
 package de.dsms.rsscreator.application.service.feedcreation;
 
-import com.rometools.rome.feed.synd.*;
+import com.rometools.rome.feed.synd.SyndFeed;
+import com.rometools.rome.feed.synd.SyndFeedImpl;
 import com.rometools.rome.io.FeedException;
 import com.rometools.rome.io.SyndFeedOutput;
 import de.dsms.rsscreator.application.model.FeedConfig;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -62,6 +59,7 @@ public class FeedCreator {
         syndFeed.setLink(feedConfig.getUrl());
         syndFeed.setAuthor(AUTHOR_DENNIS);
         syndFeed.setUri(feedConfig.getUrl());
+        syndFeed.setDescription(feedConfig.getId());
         syndFeed.setPublishedDate(publishDate);
         return syndFeed;
     }
