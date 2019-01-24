@@ -6,6 +6,7 @@ import de.dsms.rsscreator.application.repository.FeedConfigRepository;
 import de.dsms.rsscreator.application.repository.FeedRepository;
 import de.dsms.rsscreator.application.service.feedcreation.FeedCreator;
 import lombok.RequiredArgsConstructor;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -18,7 +19,7 @@ public class FeedService {
     private final FeedRepository feedRepository;
     private final FeedCreator feedCreator;
 
-    //@Scheduled(fixedDelay = 3600000L)
+    @Scheduled(fixedDelay = 3600000L)
     public void schedule() {
         feedRepository.deleteAll();
         feedConfigRepository.findAll().forEach(this::createFeed);
