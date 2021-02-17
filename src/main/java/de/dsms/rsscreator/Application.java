@@ -1,4 +1,4 @@
-package de.dsms.rsscreator.application;
+package de.dsms.rsscreator;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
