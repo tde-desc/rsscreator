@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.2.RELEASE</version>
+		<version>2.4.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>de.dsms.rsscreator</groupId>
 	<artifactId>application</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>application</name>
 	<description>RSS Creator &amp; Provider</description>
 
 	<properties>
-		<java.version>1.8</java.version>
-		<rome.version>1.12.0</rome.version>
-		<jsoup.version>1.11.3</jsoup.version>
-		<springfox-swagger2.version>2.9.2</springfox-swagger2.version>
+		<java.version>15</java.version>
+		<rome.version>1.15.0</rome.version>
+		<jsoup.version>1.13.1</jsoup.version>
+		<springfox-swagger2.version>3.0.0</springfox-swagger2.version>
+		<embedded-redis>0.7.3</embedded-redis>
+		<jedis>3.3.0</jedis>
 	</properties>
 
 	<dependencies>
@@ -28,7 +30,24 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>${jedis}</version>
+		</dependency>
+		<dependency>
+			<groupId>it.ozimov</groupId>
+			<artifactId>embedded-redis</artifactId>
+			<version>${embedded-redis}</version>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-simple</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>javax.persistence</groupId>

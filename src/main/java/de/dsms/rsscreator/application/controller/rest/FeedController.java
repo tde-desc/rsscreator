@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @RestController
 @RequiredArgsConstructor
@@ -18,7 +19,7 @@ public class FeedController {
 
     @GetMapping
     public String getAll() {
-        return feedRepository.findAll().stream().map(Feed::getRss).collect(Collectors.joining());
+        return StreamSupport.stream(feedRepository.findAll().spliterator(), false).map(Feed::getRss).collect(Collectors.joining());
     }
 
     @GetMapping("/{id}")

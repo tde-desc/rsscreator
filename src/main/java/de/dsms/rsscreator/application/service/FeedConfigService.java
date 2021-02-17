@@ -5,15 +5,13 @@ import de.dsms.rsscreator.application.repository.FeedConfigRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 @RequiredArgsConstructor
 public class FeedConfigService {
 
     private final FeedConfigRepository feedConfigRepository;
 
-    public List<FeedConfig> getAll() {
+    public Iterable<FeedConfig> getAll() {
         return feedConfigRepository.findAll();
     }
 

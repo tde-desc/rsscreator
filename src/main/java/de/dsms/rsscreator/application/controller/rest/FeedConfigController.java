@@ -5,8 +5,6 @@ import de.dsms.rsscreator.application.service.FeedConfigService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/rest/feed/config")
@@ -15,7 +13,7 @@ public class FeedConfigController {
     private final FeedConfigService feedConfigService;
 
     @GetMapping
-    public List<FeedConfig> getAll() {
+    public Iterable<FeedConfig> getAll() {
         return feedConfigService.getAll();
     }
 
