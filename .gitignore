@@ -27,3 +27,4 @@
 package-lock.json
 node/**
 node_modules/**
+src/main/resources/static/built
