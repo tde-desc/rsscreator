@@ -1,4 +1,5 @@
 const React = require('react');
+const ReactDOM = require('react-dom');
 const client = require('./client');
 
 export default class NewFeedConfig extends React.Component {
@@ -10,29 +11,24 @@ export default class NewFeedConfig extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const newFeedConfig = {};
-        this.props.attributes.forEach(attribute => {
-            newFeedConfig[attribute] = ReactDOM.findDOMNode(this.refs[attribute])
-                .value.trim();
+        const node = ReactDOM.findDOMNode(e.target.parentElement)
+        node.querySelectorAll(".field").forEach(field => {
+            newFeedConfig[field.name] = field.value.trim();
         });
-        this.props.onCreate(newFeedConfig);
+        this.onCreate(newFeedConfig);
 
         //clear dialogs input
-        this.props.attributes.forEach(attribute => {
-            ReactDOM.findDOMNode(this.refs[attribute]).value = '';
+        node.querySelectorAll(".field").forEach(field => {
+            field.value = '';
         });
     }
 
     onCreate(newFeedConfig) {
-    	follow(client, root, ['feedConfigs']).then(feedConfigCollection => {
-    		return client({
+    	client({
     			method: 'POST',
     			path: '/api/rest/feed/config',
     			entity: newFeedConfig,
     			headers: {'Content-Type': 'application/json'}
-    		})
-    	}).then(response => {
-    		return follow(client, root, [
-    			{rel: 'feedConfigs', params: {'size': this.state.pageSize}}]);
     	});
     }
 
@@ -40,11 +36,18 @@ export default class NewFeedConfig extends React.Component {
         return (
             <div id="createFeedConfig">
                 <div>
-                    <h2>Create new FeedConfig</h2>
+                    <h3>Create new FeedConfig</h3>
                     <form>
-                        <p>
-                            <input type="text" placeholder="ID" ref="ID" className="field" />
-                        </p>
+                        <p><input type="text" placeholder="ID" name="id" className="field" /></p>
+                        <p><input type="text" placeholder="Name" name="name" className="field" /></p>
+                        <p><input type="text" placeholder="Beschreibung" name="description" className="field" /></p>
+                        <p><input type="text" placeholder="URL" name="url" className="field" /></p>
+                        <p><input type="text" placeholder="Eintrag" name="entryIdentifier" className="field" /></p>
+                        <p><input type="text" placeholder="Titel" name="titleIdentifier" className="field" /></p>
+                        <p><input type="text" placeholder="Bild" name="pictureIdentifier" className="field" /></p>
+                        <p><input type="text" placeholder="Autor" name="authorIdentifier" className="field" /></p>
+                        <p><input type="text" placeholder="Beschreibung" name="descriptionIdentifier" className="field" /></p>
+                        <p><input type="text" placeholder="URL" name="urlIdentifier" className="field" /></p>
                         <button onClick={this.handleSubmit}>Create</button>
                     </form>
                 </div>

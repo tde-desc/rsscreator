@@ -1,4 +1,5 @@
 const React = require('react');
+const ReactDOM = require('react-dom');
 const client = require('./client');
 
 export default class FeedConfigs extends React.Component {
