@@ -4,7 +4,7 @@ import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.feed.synd.SyndFeedImpl;
 import com.rometools.rome.io.FeedException;
 import com.rometools.rome.io.SyndFeedOutput;
-import de.dsms.rsscreator.application.model.FeedConfig;
+import de.dsms.rsscreator.domain.feed.entity.FeedConfig;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

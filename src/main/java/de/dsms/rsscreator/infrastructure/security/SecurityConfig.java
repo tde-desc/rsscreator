@@ -1,4 +1,4 @@
-package de.dsms.rsscreator.application.config;
+package de.dsms.rsscreator.infrastructure.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

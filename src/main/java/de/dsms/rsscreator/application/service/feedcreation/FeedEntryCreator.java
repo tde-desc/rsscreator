@@ -4,7 +4,7 @@ import com.rometools.rome.feed.synd.SyndContent;
 import com.rometools.rome.feed.synd.SyndContentImpl;
 import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndEntryImpl;
-import de.dsms.rsscreator.application.model.FeedConfig;
+import de.dsms.rsscreator.domain.feed.entity.FeedConfig;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;

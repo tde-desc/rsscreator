@@ -1,4 +1,4 @@
-package de.dsms.rsscreator.application.model;
+package de.dsms.rsscreator.domain.feed.entity;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;

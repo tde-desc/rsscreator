@@ -1,8 +1,8 @@
-package de.dsms.rsscreator.application.controller.rest;
+package de.dsms.rsscreator.application.feed.controller;
 
-import de.dsms.rsscreator.application.model.Feed;
-import de.dsms.rsscreator.application.repository.FeedRepository;
-import de.dsms.rsscreator.application.service.FeedService;
+import de.dsms.rsscreator.application.feed.service.FeedRequester;
+import de.dsms.rsscreator.domain.feed.entity.Feed;
+import de.dsms.rsscreator.domain.feed.repository.FeedRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +15,7 @@ import java.util.stream.StreamSupport;
 public class FeedController {
 
     private final FeedRepository feedRepository;
-    private final FeedService feedService;
+    private final FeedRequester feedRequester;
 
     @GetMapping
     public String getAll() {
@@ -29,6 +29,6 @@ public class FeedController {
 
     @PutMapping
     public void put() {
-        feedService.schedule();
+        feedRequester.request();
     }
 }

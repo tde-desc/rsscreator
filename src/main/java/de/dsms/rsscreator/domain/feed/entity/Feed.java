@@ -1,4 +1,4 @@
-package de.dsms.rsscreator.application.model;
+package de.dsms.rsscreator.domain.feed.entity;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

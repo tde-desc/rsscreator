@@ -1,6 +1,6 @@
-package de.dsms.rsscreator.application.repository;
+package de.dsms.rsscreator.domain.feed.repository;
 
-import de.dsms.rsscreator.application.model.Feed;
+import de.dsms.rsscreator.domain.feed.entity.Feed;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

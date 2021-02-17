@@ -1,6 +1,6 @@
-package de.dsms.rsscreator.application.repository;
+package de.dsms.rsscreator.domain.feed.repository;
 
-import de.dsms.rsscreator.application.model.FeedConfig;
+import de.dsms.rsscreator.domain.feed.entity.FeedConfig;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package de.dsms.rsscreator.application.config;
+package de.dsms.rsscreator.infrastructure.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

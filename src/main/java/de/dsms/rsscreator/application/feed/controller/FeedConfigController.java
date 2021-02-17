@@ -1,29 +1,29 @@
-package de.dsms.rsscreator.application.service;
+package de.dsms.rsscreator.application.feed.controller;
 
-import de.dsms.rsscreator.application.model.FeedConfig;
-import de.dsms.rsscreator.application.repository.FeedConfigRepository;
+import de.dsms.rsscreator.domain.feed.entity.FeedConfig;
+import de.dsms.rsscreator.domain.feed.repository.FeedConfigRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.*;
 
-@Service
+@RestController
 @RequiredArgsConstructor
-public class FeedConfigService {
+@RequestMapping("/api/rest/feed/config")
+public class FeedConfigController {
 
     private final FeedConfigRepository feedConfigRepository;
 
+    @GetMapping
     public Iterable<FeedConfig> getAll() {
         return feedConfigRepository.findAll();
     }
 
-    public FeedConfig getOne(String id) {
-        return feedConfigRepository.findById(id).get();
-    }
-
-    public FeedConfig add(FeedConfig feedConfig) {
+    @PostMapping
+    public FeedConfig post(@RequestBody FeedConfig feedConfig) {
         return feedConfigRepository.save(feedConfig);
     }
 
-    public FeedConfig update(FeedConfig feedConfig) {
+    @PutMapping
+    public FeedConfig put(@RequestBody FeedConfig feedConfig) {
         if (!feedConfigRepository.existsById(feedConfig.getId())) {
             throw new IllegalArgumentException("Die Id " + feedConfig.getId() + " ist unbekannt.");
         }
