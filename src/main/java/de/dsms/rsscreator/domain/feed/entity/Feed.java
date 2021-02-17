@@ -1,17 +1,15 @@
 package de.dsms.rsscreator.domain.feed.entity;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
 @Getter
 @Setter
-@ToString
 @RedisHash
 @EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
 public class Feed {
     @Id
     private String id;

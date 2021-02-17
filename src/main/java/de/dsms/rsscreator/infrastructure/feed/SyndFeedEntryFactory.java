@@ -1,4 +1,4 @@
-package de.dsms.rsscreator.application.service.feedcreation;
+package de.dsms.rsscreator.infrastructure.feed;
 
 import com.rometools.rome.feed.synd.SyndContent;
 import com.rometools.rome.feed.synd.SyndContentImpl;
@@ -17,7 +17,7 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class FeedEntryCreator {
+public class SyndFeedEntryFactory {
 
     List<SyndEntry> createEntries(FeedConfig feedConfig, Date publishDate, Document document) {
         List<SyndEntry> syndEntries = new ArrayList<>();

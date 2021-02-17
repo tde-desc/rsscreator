@@ -1,9 +1,10 @@
-package de.dsms.rsscreator.application.service.feedcreation;
+package de.dsms.rsscreator.infrastructure.feed;
 
 import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.feed.synd.SyndFeedImpl;
 import com.rometools.rome.io.FeedException;
 import com.rometools.rome.io.SyndFeedOutput;
+import de.dsms.rsscreator.application.feed.service.FeedFactory;
 import de.dsms.rsscreator.domain.feed.entity.FeedConfig;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.Jsoup;
@@ -16,21 +17,21 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class FeedCreator {
+public class SyndFeedFactory implements FeedFactory {
 
     private static final String FEED_TYPE_ATOM = "atom_1.0";
     private static final String AUTHOR_DENNIS = "Dennis";
-    private final FeedEntryCreator feedEntryCreator;
+    private final SyndFeedEntryFactory syndFeedEntryFactory;
 
     public Optional<String> createFeed(FeedConfig feedConfig) {
         Optional<Document> documentOptional = getDocument(feedConfig);
-        if (!documentOptional.isPresent()) {
+        if (documentOptional.isEmpty()) {
             return Optional.empty();
         }
 
         Date publishDate = new Date();
         SyndFeed syndFeed = createSyndFeed(feedConfig, publishDate);
-        syndFeed.setEntries(feedEntryCreator.createEntries(feedConfig, publishDate, documentOptional.get()));
+        syndFeed.setEntries(syndFeedEntryFactory.createEntries(feedConfig, publishDate, documentOptional.get()));
         return createString(syndFeed);
     }
 

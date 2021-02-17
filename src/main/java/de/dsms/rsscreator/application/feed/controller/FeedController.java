@@ -1,6 +1,6 @@
 package de.dsms.rsscreator.application.feed.controller;
 
-import de.dsms.rsscreator.application.feed.service.FeedRequester;
+import de.dsms.rsscreator.application.feed.service.FeedRefresher;
 import de.dsms.rsscreator.domain.feed.entity.Feed;
 import de.dsms.rsscreator.domain.feed.repository.FeedRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +15,7 @@ import java.util.stream.StreamSupport;
 public class FeedController {
 
     private final FeedRepository feedRepository;
-    private final FeedRequester feedRequester;
+    private final FeedRefresher feedRefresher;
 
     @GetMapping
     public String getAll() {
@@ -29,6 +29,6 @@ public class FeedController {
 
     @PutMapping
     public void put() {
-        feedRequester.request();
+        feedRefresher.request();
     }
 }
