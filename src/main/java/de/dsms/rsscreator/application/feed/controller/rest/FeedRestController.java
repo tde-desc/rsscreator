@@ -1,4 +1,4 @@
-package de.dsms.rsscreator.application.feed.controller;
+package de.dsms.rsscreator.application.feed.controller.rest;
 
 import de.dsms.rsscreator.application.feed.service.FeedRefresher;
 import de.dsms.rsscreator.domain.feed.entity.Feed;
@@ -12,7 +12,7 @@ import java.util.stream.StreamSupport;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/rest/feed")
-public class FeedController {
+public class FeedRestController {
 
     private final FeedRepository feedRepository;
     private final FeedRefresher feedRefresher;

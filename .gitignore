@@ -23,3 +23,7 @@
 /dist/
 /nbdist/
 /.nb-gradle/
+
+package-lock.json
+node/**
+node_modules/**

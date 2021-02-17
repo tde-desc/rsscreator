@@ -1,4 +1,4 @@
-package de.dsms.rsscreator.application.feed.controller;
+package de.dsms.rsscreator.application.feed.controller.rest;
 
 import de.dsms.rsscreator.domain.feed.entity.FeedConfig;
 import de.dsms.rsscreator.domain.feed.repository.FeedConfigRepository;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/rest/feed/config")
-public class FeedConfigController {
+public class FeedConfigRestController {
 
     private final FeedConfigRepository feedConfigRepository;
 
