@@ -15,16 +15,16 @@
 	<description>RSS Creator &amp; Provider</description>
 
 	<properties>
-        <java.version>15</java.version>
-        <rome.version>1.15.0</rome.version>
-        <jsoup.version>1.13.1</jsoup.version>
-        <springfox-swagger2.version>3.0.0</springfox-swagger2.version>
-        <embedded-redis>0.7.3</embedded-redis>
-        <jedis>3.3.0</jedis>
-        <frontend-maven-plugin.version>1.11.2</frontend-maven-plugin.version>
-        <frontend-maven-plugin.nodeVersion>v15.8.0</frontend-maven-plugin.nodeVersion>
-        <frontend-maven-plugin.npmVersion>7.5.4</frontend-maven-plugin.npmVersion>
-    </properties>
+		<java.version>15</java.version>
+		<rome.version>1.15.0</rome.version>
+		<springfox-swagger2.version>3.0.0</springfox-swagger2.version>
+		<embedded-redis>0.7.3</embedded-redis>
+		<jedis>3.3.0</jedis>
+		<frontend-maven-plugin.version>1.11.2</frontend-maven-plugin.version>
+		<frontend-maven-plugin.nodeVersion>v15.8.0</frontend-maven-plugin.nodeVersion>
+		<frontend-maven-plugin.npmVersion>7.5.4</frontend-maven-plugin.npmVersion>
+		<jsoup.version>1.13.1</jsoup.version>
+	</properties>
 
 	<dependencies>
 		<dependency>
