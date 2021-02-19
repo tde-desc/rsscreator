@@ -24,6 +24,7 @@
 		<frontend-maven-plugin.nodeVersion>v15.8.0</frontend-maven-plugin.nodeVersion>
 		<frontend-maven-plugin.npmVersion>7.5.4</frontend-maven-plugin.npmVersion>
 		<jsoup.version>1.13.1</jsoup.version>
+		<embedded-redis.version>0.7.3</embedded-redis.version>
 	</properties>
 
 	<dependencies>
@@ -44,7 +45,6 @@
 			<groupId>it.ozimov</groupId>
 			<artifactId>embedded-redis</artifactId>
 			<version>${embedded-redis}</version>
-			<scope>test</scope>
 			<exclusions>
 				<exclusion>
 					<groupId>org.slf4j</groupId>
