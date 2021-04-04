@@ -14,7 +14,7 @@ export default class EmbeddedPage extends React.Component {
     }
     render() {
         return (
-            <iframe src="/api/rest/embeddedpage?url=http%3A%2F%2Fwww.google.de" width="100%" height="500" sandbox="allow-same-origin allow-scripts">
+            <iframe src="/api/rest/embeddedpage?url=http%3A%2F%2Fwww.immobilienscout24.de" width="100%" height="500" sandbox="allow-same-origin allow-scripts">
             </iframe>
         )
     }

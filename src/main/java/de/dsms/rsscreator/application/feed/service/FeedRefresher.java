@@ -22,6 +22,7 @@ public class FeedRefresher {
 
     @Scheduled(fixedDelay = 3600000L)
     public void request() {
+        feedConfigRepository.deleteAll();
         eventPublisher.publishEvent(new FeedRefreshStartedEvent());
         feedConfigRepository.findAll().forEach(this::createFeed);
     }
