@@ -1,8 +1,10 @@
 package de.dsms.rsscreator.application.feed.controller.rest;
 
 import de.dsms.rsscreator.domain.feed.entity.FeedConfig;
+import de.dsms.rsscreator.domain.feed.event.FeedConfigCreatedEvent;
 import de.dsms.rsscreator.domain.feed.repository.FeedConfigRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 public class FeedConfigRestController {
 
     private final FeedConfigRepository feedConfigRepository;
+    private final ApplicationEventPublisher eventPublisher;
 
     @GetMapping
     public Iterable<FeedConfig> getAll() {
@@ -19,7 +22,9 @@ public class FeedConfigRestController {
 
     @PostMapping
     public FeedConfig post(@RequestBody FeedConfig feedConfig) {
-        return feedConfigRepository.save(feedConfig);
+        FeedConfig config = feedConfigRepository.save(feedConfig);
+        eventPublisher.publishEvent(new FeedConfigCreatedEvent(config));
+        return config;
     }
 
     @PutMapping
