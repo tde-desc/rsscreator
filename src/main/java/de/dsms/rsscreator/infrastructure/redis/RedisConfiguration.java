@@ -15,7 +15,7 @@ public class RedisConfiguration {
     @Bean
     public JedisConnectionFactory jedisConnectionFactory() throws URISyntaxException {
         JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory();
-        String redisUrl = System.getenv("STACKHERO_REDIS_URL_TLS");
+        String redisUrl = System.getenv("STACKHERO_REDIS_URL_CLEAR");
         if (StringUtils.isNotBlank(redisUrl)) {
             URI redisURI = new URI(redisUrl);
             RedisStandaloneConfiguration config = jedisConnectionFactory.getStandaloneConfiguration();
