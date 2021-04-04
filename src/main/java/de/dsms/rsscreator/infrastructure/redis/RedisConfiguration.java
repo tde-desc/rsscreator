@@ -15,10 +15,12 @@ public class RedisConfiguration {
     @Bean
     public JedisConnectionFactory jedisConnectionFactory() throws URISyntaxException {
         JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory();
-        String redisUrl = System.getenv("STACKHERO_REDIS_URL_CLEAR");
+        String redisUrl = System.getenv("STACKHERO_REDIS_URL_TLS");
         if (StringUtils.isNotBlank(redisUrl)) {
             URI redisURI = new URI(redisUrl);
+            String pw = redisURI.getUserInfo().split(":", 2)[1];
             RedisStandaloneConfiguration config = jedisConnectionFactory.getStandaloneConfiguration();
+            config.setPassword(pw);
             config.setHostName(redisURI.getHost());
         }
         return jedisConnectionFactory;
