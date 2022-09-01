@@ -23,7 +23,7 @@
 		<frontend-maven-plugin.version>1.11.2</frontend-maven-plugin.version>
 		<frontend-maven-plugin.nodeVersion>v15.8.0</frontend-maven-plugin.nodeVersion>
 		<frontend-maven-plugin.npmVersion>7.5.4</frontend-maven-plugin.npmVersion>
-		<jsoup.version>1.13.1</jsoup.version>
+		<jsoup.version>1.15.3</jsoup.version>
 		<embedded-redis.version>0.7.3</embedded-redis.version>
 	</properties>
 
